@@ -14,10 +14,6 @@ var location_Controller = TextEditingController();
 var location_link_Controller = TextEditingController();
 var describtion_Controller  = TextEditingController();
 
-
-
-
-
 class form_residential extends StatefulWidget {
   const form_residential({Key? key}) : super(key: key);
 
@@ -26,66 +22,6 @@ class form_residential extends StatefulWidget {
 }
 
 class _form_residentialState extends State<form_residential> {
-
-  late File _file;
-  late String img;
-  late String img64;
-
-
-  Future img_picker(ImageSource source)async{
-    final  myfile = await ImagePicker().pickImage(source: source);
-    setState(() {
-      if(myfile==null) return print("error =>>> null");
-      _file = File(myfile.path);
-    });
-  }
-  Future upload() async {
-    setState(() {
-      if (_file == null) return print("//////////////file is null<<<<<<<<<<");
-      String imageName = _file.path.split("/").last ;
-      String img640= base64Encode(_file.readAsBytesSync());
-      print("//////////////this is encoded file");
-      print(img640);
-      print("//////////////this is file");
-      print(_file);
-      print("//////////////this is imageName");
-      print(imageName);
-
-      img=imageName;
-      img64 = img640;
-    });
-  }
-  Future doit() async {
-    setState(() {
-      if (_file == null) return print("//////////////file is null<<<<<<<<<<");
-      String imageName = _file.path.split("/").last ;
-      String img640= base64Encode(_file.readAsBytesSync());
-      img=imageName;
-      img64 = img640;
-    });
-  }
-
-  Future send() async {
-    var url = Uri.parse("http://localhost:3007/try");
-    Map<String, String> headers = {"Content-type": "application/json"};
-
-    String json = '{"img": "$img",'
-        ' "img64": "$img64"}';
-    // make POST request
-    Response response = await post(url, headers: headers, body: json);
-    // check the status code for the result
-    int statusCode = response.statusCode;
-    // this API passes back the id of the new item added to the body
-    String body1 = response.body;
-    var data = jsonDecode(body1);
-    print(data);
-    var res = data["code"];
-
-    if (res == null) {
-      print("its null dearling");
-    }
-  }
-
 
   @override
   /// main var
@@ -317,7 +253,7 @@ class _form_residentialState extends State<form_residential> {
                Row(
                  children: [
                    ElevatedButton(
-                       onPressed: () => img_picker(ImageSource.camera)
+                       onPressed: () {}
                        ,
                        child: Row(
                          children: [
@@ -332,7 +268,7 @@ class _form_residentialState extends State<form_residential> {
                    SizedBox(width: 19,),
                    
                    ElevatedButton(
-                       onPressed: ()  =>  img_picker(ImageSource.gallery)
+                       onPressed: () {}
                        ,
                        child: Row(
                          children: [
@@ -363,9 +299,6 @@ class _form_residentialState extends State<form_residential> {
                     ElevatedButton(
                       onPressed: (){
                         setState(() {
-                          _file==null ?  print("error =====>>> null") : print(_file);
-                          upload();
-                     //     Navigator.of(context).push(MaterialPageRoute(builder: (context) => test(img: _file) ));
 
                           });
                       },
