@@ -1,6 +1,7 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:diary/templates/other_templates.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import 'package:http/http.dart';
 import 'dart:convert';
@@ -22,6 +23,24 @@ class form_residential extends StatefulWidget {
 }
 
 class _form_residentialState extends State<form_residential> {
+
+  PlatformFile? pickedFile;
+
+  Future uploadFile() async {
+    final path = 'Diary/${pickedFile!.name}';
+    final file = File(pickedFile!.path!);
+
+    final ref = FirebaseStorage.instance.ref().child(path);
+    ref.putFile(file);
+  }
+
+  Future selectFile() async {
+    final result = await FilePicker.platform.pickFiles();
+    if (result==null) return print("file is null");
+    setState(() {
+      pickedFile = result.files.first;
+    });
+  }
 
   @override
   /// main var
@@ -252,30 +271,33 @@ class _form_residentialState extends State<form_residential> {
 
                Row(
                  children: [
-                   ElevatedButton(
-                       onPressed: () {}
-                       ,
-                       child: Row(
-                         children: [
-                           Text("التقاط صورة"),
-                           Icon(Icons.camera_alt)
-                         ],
-                       ),
-                       style: ElevatedButton.styleFrom(
-                           primary: Diary_button_color
-                       )
-                   ),
+
+                   if (pickedFile!= null)
+                     Expanded(
+                     child:
+                     Container(
+                       alignment: Alignment.center,
+                     color: Colors.green[100],
+                     child:
+                     Image.file(
+                         File(pickedFile!.path!),
+                       fit:  BoxFit.cover,
+                     ),
+
+                     )
+                     ),
                    SizedBox(width: 19,),
                    
                    ElevatedButton(
-                       onPressed: () {}
-                       ,
+                       onPressed: uploadFile,
                        child: Row(
                          children: [
                            Text("اختيار صورة من المعرض"),
                            Icon(Icons.image)
                          ],
                        ),
+
+
                        style: ElevatedButton.styleFrom(
                            primary: Diary_button_color
                        )
