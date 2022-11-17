@@ -29,8 +29,6 @@ class view_residetial extends StatefulWidget {
    bool property_state2;
 
 
-
-
   view_residetial ({
 
     required this.residential_type2,
@@ -62,8 +60,8 @@ class view_residetial extends StatefulWidget {
 
 class _view_residetialState extends State<view_residetial> {
 
-
   Future<void>? _launched;
+
   @override
 
   Future<void> _launchInBrowser(Uri url) async {

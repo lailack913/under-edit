@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
-Color Diary_appbar_color= Colors.green;
-Color Diary_button_color= Colors.green;
+// Styling template
+Color Diary_appbar_color= Colors.teal;
+Color Diary_button_color= Colors.teal;
+Color main_color = Colors.teal;
 
 
 
@@ -42,13 +45,15 @@ class other_templates{
   }
 
 
+// in property_type.dart
   static property_choices( double height, double width,
       String title, String script,
       double title_size, double script_size ){
     return Container(
       height: height, width: width,
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey, width: 3),
+          color: Colors.teal.shade300,
+          border: Border.all(color: Colors.grey.shade300, width: 3),
           borderRadius: BorderRadius.circular(19)
       ),
 
@@ -58,9 +63,9 @@ class other_templates{
 
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("$title",style: TextStyle(fontSize: title_size),),
+          Text("$title",style: TextStyle(fontSize: title_size,color: Colors.white),),
           Text("$script",
-            style: TextStyle(fontSize: script_size), textAlign: TextAlign.right,)
+            style: TextStyle(fontSize: script_size, color: Colors.white70), textAlign: TextAlign.right,)
 
         ],
       ),
@@ -76,13 +81,13 @@ class other_templates{
           width: width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(17),
-            border: Border.all(color: (isPressed == true ) ? Colors.green : Colors.grey, width: 3),
+            border: Border.all(color: (isPressed == true ) ? main_color : Colors.grey, width: 3),
           ),
           child:
           Center(
             child:
             Text("$type",  style: TextStyle(
-              fontSize: fs , color: (isPressed == true ) ? Colors.green : Colors.grey,
+              fontSize: fs , color: (isPressed == true ) ? main_color : Colors.grey,
             ),),
           )
       );
@@ -91,25 +96,30 @@ class other_templates{
   static tow_choices_bar(bool detector, var detected,
       String choice1, String choice2){
     return  Container(
-      height: 35, width: 110,
+      height: 4.h, width: 27.w,
       decoration: BoxDecoration(
-        border: Border.all(),
+        border: Border.all( color: Colors.grey, width: 1),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-              width: 53,
-              color: !detector ? Colors.green.shade200: Colors.white,
+              width: 12.7.w,
+              color: !detector ? Colors.teal.shade300: Colors.white,
               alignment: Alignment.center,
-              child: Text(choice2,style: TextStyle(fontSize: 19),)),
-          Container(height: 25, width: 3,color: Colors.grey,),
+              child: Text(choice2,style: TextStyle(fontSize: !detector ? 18.sp: 16.sp,
+                                                     color: !detector ? Colors.white: Colors.black
+              ),)),
+          Container(height: 3.h, width: 0.7.w,color: Colors.grey,),
           Container(
-              width: 51,
-              color: detector ? Colors.green.shade200: Colors.white,
+              width: 12.7.w,
+              color: detector ? Colors.teal.shade300: Colors.white,
               alignment: Alignment.center,
               child:
-              Text(choice1,style: TextStyle(fontSize: 19),)
+              Text(choice1,style: TextStyle(fontSize: detector ? 18.sp: 16.sp,
+                                             color: detector ? Colors.white: Colors.black
+
+              ),)
           ),
         ],
       ),
@@ -126,7 +136,7 @@ class other_templates{
         labelText: lable,
         labelStyle: TextStyle(),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.green, width: 2.0),
+            borderSide: BorderSide(color: Colors.teal.shade300, width: 2.0),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey, width: 2.0),

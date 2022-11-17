@@ -5,32 +5,47 @@ import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class view_store extends StatefulWidget {
+class preview_residential extends StatefulWidget {
 
+  final String  residential_type2;
   final  String sell_rent2;
   final String  city2;
   final String  district2;
   final String location_link2;
-  final String area2;
-  final String interface2;
-  final String depth2;
-  final String price2;
+  final int area2;
+  final double interface2;
+  final double depth2;
+  final double price2;
   final String price_type2;
+  final  int room2;
+  final int hall2;
+  final int kitchen2;
+  final int bathroom2;
+  final bool garden2;
+  final bool carage2;
   final String owner2;
   final String owner_phone2;
   final String property_describtion2;
   bool property_state2;
 
-  view_store ({
+  preview_residential ({
+
+    required this.residential_type2,
     required this.sell_rent2,
     required this.city2,
     required this.district2,
+    required this.location_link2, /// must be between single quotations '' not double ""
     required this.area2,
     required this.interface2,
     required this.depth2,
-    required this.location_link2, /// must be between single quotations '' not double ""
     required this.price2,
     required this.price_type2,
+    required this.room2,
+    required this.hall2,
+    required this.kitchen2,
+    required this.bathroom2,
+    required this.garden2,
+    required this.carage2,
     required this.owner2,
     required this.owner_phone2,
     required this.property_describtion2,
@@ -39,12 +54,13 @@ class view_store extends StatefulWidget {
   });
 
   @override
-  State<view_store> createState() => _view_storeState();
+  State<preview_residential> createState() => _preview_residentialState();
 }
 
-class _view_storeState extends State<view_store> {
+class _preview_residentialState extends State<preview_residential> {
 
   Future<void>? _launched;
+
   @override
 
   Future<void> _launchInBrowser(Uri url) async {
@@ -67,6 +83,7 @@ class _view_storeState extends State<view_store> {
   @override
   Widget build(BuildContext context) {
 
+
     // onPressed calls using this URL are not gated on a 'canLaunch' check
     // because the assumption is that every device can launch a web URL.
     final Uri toLaunch =
@@ -75,6 +92,7 @@ class _view_storeState extends State<view_store> {
     ///
     ///
     ///
+
 
     return Scaffold(
         body:
@@ -141,10 +159,10 @@ class _view_storeState extends State<view_store> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text("متجر-"+widget.sell_rent2,style: TextStyle(fontSize: 27),),
+                        Text(widget.residential_type2+"-"+widget.sell_rent2,style: TextStyle(fontSize: 27),),
                         Text(widget.city2+"-"+widget.district2,style: TextStyle(fontSize: 27),),
                         Text(" السعر: ${widget.price2}"+widget.price_type2,style: TextStyle(fontSize: 27),),
-                        Text("المساحة: ${widget.area2}  م² ", style: TextStyle(fontSize: 27, fontWeight: FontWeight.w500),),
+                        Text("المساحة: ${widget.area2} م²", style: TextStyle(fontSize: 27, fontWeight: FontWeight.w500),),
                         Row(
                           mainAxisAlignment:MainAxisAlignment.end,
                           children: [
@@ -158,7 +176,45 @@ class _view_storeState extends State<view_store> {
                   ),
 
                   SizedBox(height: 13,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      rooms("حمام", widget.bathroom2, Icon(Icons.bathtub_outlined, size: 30,)),
+                      rooms("غرف", widget.room2, Icon(Icons.bed_outlined, size: 37,)),
 
+                    ],
+                  ),
+                  SizedBox(height: 13,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      rooms("مطبخ", widget.kitchen2, Icon(Icons.soup_kitchen_outlined, size: 37,)),
+                      rooms("صالة", widget.hall2, Icon(Icons.living_outlined, size: 37,)),
+                    ],
+                  ),
+
+                  Padding(padding:EdgeInsets.fromLTRB(0, 17, 37, 13),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Row(
+                          children: [
+                            Text("حديقة", style: TextStyle(fontSize: 27, fontWeight: FontWeight.w500),),
+                            SizedBox(width: other_templates.width(context)/20,),
+                            Icon( widget.garden2 ?  Icons.check:Icons.close,),
+                          ],
+                        ),
+                        SizedBox(width: other_templates.width(context)/5,),
+                        Row(
+                          children: [
+                            Text("كراج", style: TextStyle(fontSize: 27, fontWeight: FontWeight.w500),),
+                            SizedBox(width: other_templates.width(context)/20,),
+                            Icon( widget.carage2 ?  Icons.check:Icons.close,),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                   Container( height: 7, color: Colors.grey.shade300,),
                   Padding(padding: EdgeInsets.fromLTRB(0, 17, 0, 13),
                     child: Row(
@@ -227,4 +283,25 @@ class _view_storeState extends State<view_store> {
         )
     );
   }
+
+
+  rooms(String  type, int number, Icon icona
+      ){
+    return Container(
+      height: other_templates.height(context)/15,
+      width: other_templates.width(context)/2.35,
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey, width: 2),
+          borderRadius: BorderRadius.all(Radius.circular(11))),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text("$type",style: TextStyle(fontSize: 30),),
+          Text("$number",style: TextStyle(fontSize: 30),),
+          icona,
+        ],
+      ),
+    );
+  }
+
 }

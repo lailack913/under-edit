@@ -1,5 +1,7 @@
 import 'package:diary/2_account/b_login/login.dart';
 import 'package:diary/2_account/e_account%20details/information%20section/account_info.dart';
+import 'package:diary/2_account/e_account%20details/information%20section/my_deals.dart';
+import 'package:diary/2_account/e_account%20details/information%20section/my_properties.dart';
 import 'package:diary/5_saved/saved.dart';
 import 'package:diary/6_dashboard/payment/payment_type.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,7 @@ class _bottomNState extends State<bottomN> {
 
   static List<Widget> _widgetOptions = <Widget>[
 
-    Login_state ?  account_info() : login(),
+    my_properties(),
     subscription_state ?  saved() : payment_type(),
     saved(),
     home_page(),
@@ -37,8 +39,8 @@ class _bottomNState extends State<bottomN> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             backgroundColor: Colors.teal,
-            icon: Icon(Icons.account_circle_rounded),
-            label: 'account',
+            icon: Icon(Icons.my_library_books_rounded),
+            label: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add),

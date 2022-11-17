@@ -1,11 +1,13 @@
+import 'package:diary/dataa.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:diary/templates/other_templates.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class view_store extends StatefulWidget {
+class preview_store extends StatefulWidget {
 
   final  String sell_rent2;
   final String  city2;
@@ -21,7 +23,7 @@ class view_store extends StatefulWidget {
   final String property_describtion2;
   bool property_state2;
 
-  view_store ({
+  preview_store ({
     required this.sell_rent2,
     required this.city2,
     required this.district2,
@@ -39,10 +41,10 @@ class view_store extends StatefulWidget {
   });
 
   @override
-  State<view_store> createState() => _view_storeState();
+  State<preview_store> createState() => _preview_storeState();
 }
 
-class _view_storeState extends State<view_store> {
+class _preview_storeState extends State<preview_store> {
 
   Future<void>? _launched;
   @override
@@ -63,8 +65,9 @@ class _view_storeState extends State<view_store> {
       return const Text('');
     }
   }
-
   @override
+
+
   Widget build(BuildContext context) {
 
     // onPressed calls using this URL are not gated on a 'canLaunch' check
@@ -193,7 +196,7 @@ class _view_storeState extends State<view_store> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(":معلومات اخرى",style: TextStyle(fontSize:27),),
-                        Text(" معلومات اخرى معلومات اخرى معلومات اخرى معلومات اخرى:معلومات اخرى",style: TextStyle(fontSize:17),textAlign: TextAlign.right ,)
+                        Text(widget.property_describtion2,style: TextStyle(fontSize:17),textAlign: TextAlign.right ,)
                       ],
                     ),
                   ),
@@ -217,7 +220,24 @@ class _view_storeState extends State<view_store> {
                       ),
                     ),
                     onTap: (){
-                      widget.property_state2 = ! widget.property_state2;
+                      setState(() {
+                        widget.property_state2 = ! widget.property_state2;
+                        store_sell_rent =widget.sell_rent2;
+                        store_city = widget.city2;
+                        store_district = widget.district2;
+                        store_location_link =widget.location_link2;
+                        store_area=widget.area2;
+                        store_interface=widget.interface2;
+                        store_depth=widget.depth2;
+                        store_price=widget.price2;
+                        store_price_type=widget.price_type2;
+                        store_owner=widget.owner2;
+                        store_owner_phone=widget.owner_phone2;
+                        store_property_describtion=widget.property_describtion2;
+                        store_property_state=widget.property_state2;
+                      });
+
+
                     } ,
                   )
 

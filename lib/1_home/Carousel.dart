@@ -1,5 +1,6 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CarouselWithDotsPage extends StatefulWidget {
   List<String> imgList;
@@ -17,57 +18,61 @@ class _CarouselWithDotsPageState extends State<CarouselWithDotsPage> {
   Widget build(BuildContext context) {
 
     final List<Widget> imageSliders = widget.imgList
-        .map((item) => Container(
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(
-          Radius.circular(5.0),
-        ),
-        child: Stack(
-          children: [
-            Image.network(
-              item,
-              fit: BoxFit.cover,
-              width: 1000,
-              height: 200,
-            ),
-            Positioned(
-              bottom: 0.0,
-              left: 0.0,
-              right: 0.0,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color.fromARGB(200, 0, 0, 0),
-                      Color.fromARGB(0, 0, 0, 0),
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                  ),
-                ),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      'اضافة نص',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    ))
+        .map((item) => GestureDetector(
+                        child: Container(
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Image.network(
+                                      item,
+                                      fit: BoxFit.cover,
+                                      width: 95.w,
+                                    ),
+
+                                    Positioned(
+                                      bottom: 0.0,
+                                      left: 0.0,
+                                      right: 0.0,
+
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            colors: [
+                                              Color.fromARGB(200, 0, 0, 0),
+                                              Color.fromARGB(0, 0, 0, 0),
+                                            ],
+                                            begin: Alignment.bottomCenter,
+                                            end: Alignment.topCenter,
+                                          ),
+                                        ),
+
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 1.h,
+                                           vertical: 2.h,
+                                        ),
+                                         child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              'اضافة نص',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 17.sp,
+                                                fontWeight: FontWeight.bold,
+                                               ),
+                                             ),
+                                           ],
+                                         ),
+                                       ),
+                                     ),
+                                   ],
+                                 ),
+                             ),
+                           ),
+        ))
         .toList();
 
     return Column(
@@ -80,14 +85,15 @@ class _CarouselWithDotsPageState extends State<CarouselWithDotsPage> {
             style: TextStyle(
               color: Colors.teal,
               fontWeight: FontWeight.bold,
-              fontSize: 27,
+              fontSize: 21.sp,
             ),
           ),
         ),
+
         CarouselSlider(
           items: imageSliders,
           options: CarouselOptions(
-              height: 200,
+              height: 23.h,
               autoPlay: true,
               enlargeCenterPage: true,
               aspectRatio: 2.0,

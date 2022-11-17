@@ -1,19 +1,22 @@
-import 'dart:convert';
-
-import 'package:diary/templates/other_templates.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:diary/2_account/b_login/login.dart';
+import 'package:diary/dataa.dart';
 import 'package:flutter/material.dart';
-import 'package:diary/1_home/Carousel.dart';
-import 'package:flutter/rendering.dart';
-import 'package:http/http.dart';
 
+// import packages
+import 'package:http/http.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
+import 'dart:convert';
+import 'package:responsive_sizer/responsive_sizer.dart';
+
+//import dart files
+import 'package:diary/templates/other_templates.dart';
+import 'package:diary/1_home/Carousel.dart';
 import '../2_account/e_account details/information section/account_info.dart';
 import '../templates/post_templates.dart';
-
+import '../4_filter/filter.dart';
 class home_page extends StatefulWidget {
   const home_page({Key? key}) : super(key: key);
-
-
 
   @override
   State<home_page> createState() => _home_pageState();
@@ -66,14 +69,18 @@ class _home_pageState extends State<home_page> {
     getData();
   }
   @override
+
+
+
   Widget build(BuildContext context) {
     final List<String> imgList = [
       'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600'
           'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600'
           'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600'
     ];
+
+
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -81,33 +88,32 @@ class _home_pageState extends State<home_page> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.fromLTRB(1.w, 7.w, 3.w, 3.w),
                   decoration: BoxDecoration(
-                      color: Colors.white,
                       boxShadow: [
                         BoxShadow(
                             color: Colors.grey.shade50,
-                            offset: Offset(0,6),
+                            offset: Offset(0,9.w),
                             blurRadius: 6,
                             spreadRadius: 3
                         )
                       ]
                   ),
+
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-
                       IconButton(
-                        icon: Icon(Icons.account_circle_outlined,size: 43, ),
+                        icon: Icon(Icons.account_circle_outlined, size: 27.sp, color: main_color, ),
                         onPressed: (){
                           Navigator.of(context).
-                          push(MaterialPageRoute(builder: (context) => account_info()));
+                          push(MaterialPageRoute(builder: (context) =>  Login_state ?  account_info() : login(),));
                         },
                       ),
 
                       IconButton(
-                          icon: Icon(CupertinoIcons.question_circle,size: 39,),
+                          icon: Icon(CupertinoIcons.line_horizontal_3_decrease,size: 27.sp, color: main_color,),
                           onPressed: (){
 
                           },
@@ -124,8 +130,8 @@ class _home_pageState extends State<home_page> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 50,
-                      height: 50,
+                      width: 13.w,
+                      height: 6.h,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -133,14 +139,17 @@ class _home_pageState extends State<home_page> {
                       ),
                       child:  Icon(Icons.search),
                     ),
-                    SizedBox(width: 20,),
+
+                    SizedBox(width: 3.w,),
+
                     Expanded(
                         child: SizedBox(
-                            height: 50,
-                            child:  Directionality(textDirection: TextDirection.rtl, child: TextFormField(
-
+                            height: 6.h,
+                            child:  Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: TextFormField(
                               decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(20),
+                                  contentPadding: EdgeInsets.fromLTRB(2.w, 1.h, 2.w, 2.h),
                                   filled: false,
                                   border: InputBorder.none,
                                   hintText: "بحث عن ",
@@ -156,7 +165,7 @@ class _home_pageState extends State<home_page> {
 
               CarouselWithDotsPage(imgList: imgList),
 
-              SizedBox(height: 10,),
+              SizedBox(height: 1.h,),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -168,7 +177,7 @@ class _home_pageState extends State<home_page> {
                       style: TextStyle(
                         color: Colors.teal,
                         fontWeight: FontWeight.bold,
-                        fontSize: 27,
+                        fontSize: 21.sp,
                       ),
                     ),
                   ),
@@ -176,7 +185,7 @@ class _home_pageState extends State<home_page> {
               ),
 
               Container(
-                width: other_templates.width(context)/1.07,
+                width: 95.w,
                 child: ListView.builder(
                     itemCount: 5,
                     shrinkWrap: true,
@@ -187,7 +196,7 @@ class _home_pageState extends State<home_page> {
                           children: [
 
                             post_templates.post_residential(context,
-                                "https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",
+                              'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600',
                                 "مشتمل", "بيع",
                                 "بغداد", "الدورة",'www.google.org',
                                 150,10,15, 12, "مليون د.ع",
@@ -199,7 +208,7 @@ class _home_pageState extends State<home_page> {
                             SizedBox(height: MediaQuery.of(context).size.height/17,),
 
                             post_templates.post_land(context,
-                              "https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",
+                              'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600',
                               "سكنية","بغداد", "العامرية", 'www.google.com',
                                30,"دونم",15,10, 120, "مليون د.ع",
                               "مكتب السلطان للعقار", "07700000",
@@ -209,16 +218,16 @@ class _home_pageState extends State<home_page> {
                             SizedBox(height: MediaQuery.of(context).size.height/17,),
 
                             post_templates.post_store(context,
-                                "https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",
-                                "متجر احذية", "بيع", "البصرة", "شارع اجزائر", 'www.google.org',
-                                300,10,30, 32.0, "مليون د.ع",
+                              'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600',
+                                "بيع", "البصرة", "شارع اجزائر", 'www.google.org',
+                                "300","10","30", "32.0", "مليون د.ع",
                                 "مكتب السلطان للعقار", "07700000",
                                 "بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا", true, ),
 
                             SizedBox(height: MediaQuery.of(context).size.height/17,),
 
                             post_templates.post_buildings(context,
-                                "https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",
+                              'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600',
                                 "تجاري", "للبيع", "البصرة", "الجزائر",'www.google.com',
                                 150,10,15, 12, "مليون د.ع",
                                 3,

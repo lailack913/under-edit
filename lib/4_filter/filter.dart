@@ -357,8 +357,8 @@ class _fliterState extends State<fliter> {
 
                             post_templates.post_store(context,
                               "https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",
-                              "متجر احذية", "بيع", "البصرة", "شارع اجزائر", 'www.google.org',
-                              300,10,30, 32.0, "مليون د.ع",
+                              "بيع", "البصرة", "شارع اجزائر", 'www.google.org',
+                              "300","10","30", "32.0", "مليون د.ع",
                               "مكتب السلطان للعقار", "07700000",
                               "بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا", true, ),
 

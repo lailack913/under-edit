@@ -23,6 +23,9 @@ var password_confirm="";
 var account_typeup ="";
 var usertypeup="";
 
+// phone verify
+var phone_check=true;
+
 /// form building
 var saleorrentup = "";
 var typebuildup = "";
@@ -36,6 +39,23 @@ var roomnumberup="";
 var kichenup="";
 var interfaceup="";
 var spaceup="";
+
+// store
+ String store_sell_rent = "";
+ String store_city  = "";
+ String store_district = "";
+ String store_location_link = "";
+ String store_area = "";
+ String store_interface = "";
+ String store_depth = "";
+ String store_price = "";
+ String store_price_type = "";
+ String store_owner = "";
+ String store_owner_phone = "";
+ String store_property_describtion = "";
+bool store_property_state=false;
+
+
 
 
 

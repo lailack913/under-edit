@@ -46,8 +46,6 @@ class _change_account_infoState extends State<change_account_info> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-
-
                 ],
               )
           ),

@@ -5,6 +5,8 @@ import 'dart:convert';
 import '../../dataa.dart';
 import '../../1_home/home_page.dart';
 import '../a_sign in/creat_account.dart';
+import 'package:diary/templates/other_templates.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import '../c_restoration/restor_new_password.dart';
 
 
@@ -51,15 +53,17 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.grey,
-        ),
+       appBar: AppBar(
+         backgroundColor: Diary_appbar_color,
+       ),
         body: Container(
           alignment: Alignment.topRight,
-          padding: EdgeInsets.all(73),
+          padding: EdgeInsets.all(7.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              SizedBox(height: 5.h,),
+
               Text(
                 "تسجيل الدخول",
                 style: TextStyle(
@@ -72,6 +76,9 @@ class _loginState extends State<login> {
                   fontSize: 31,
                 ),
               ),
+
+              SizedBox(height: 2.h,),
+
               TextField(
                 controller: phoneController,
                 textAlign: TextAlign.right,
@@ -100,14 +107,12 @@ class _loginState extends State<login> {
                       "هل نسيت كلمة السر؟",
                       style: TextStyle(
                           decoration: TextDecoration.underline,
-                          color: Colors.blue),
-
+                          color: main_color),
                     ),
-
                     onTap: (){
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) => restor_pn(
-                        title: "اترجاع الحساب",
+                        title: "استرجاع الحساب",
                         message: "يرجى ادخال رقم الهاتف لاسترجاع الحساب",
                         note:  "سيتم ارسال رمز تاكيد الى رقم الهاتف المدخل لاسترجاع الحساب لذا يرجى التأكد من كتابته بشكل صحيح",
                       )));
@@ -116,24 +121,31 @@ class _loginState extends State<login> {
                   
                 ],
               ),
+              SizedBox(height: 2.h,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Column(
                     children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            u_phone = phoneController.text;
-                            password = passController.text;
-                          });
-                          getData();
+                      Container(
+                        height: 6.h, width: 20.h,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Diary_button_color
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              u_phone = phoneController.text;
+                              password = passController.text;
+                            });
+                            getData();
 
-                          Login_state=true;
-                          Navigator.of(context).
-                          push(MaterialPageRoute(builder: (context) => home_page()));
-                        },
-                        child: Text("تسجيل الدخول"),
+                            Login_state=true;
+                            Navigator.of(context).
+                            push(MaterialPageRoute(builder: (context) => home_page()));
+                          },
+                          child: Text("تسجيل الدخول", style: TextStyle(fontSize: 17.sp),),
+                        ),
                       ),
                       SizedBox(
                         height: 60,
@@ -142,12 +154,18 @@ class _loginState extends State<login> {
                         "ليس لديك حساب؟",
                         style: TextStyle(fontSize: 19),
                       ),
-                      Text(
-                        "انشاء حساب",
-                        style: TextStyle(
-                            fontSize: 19,
-                            decoration: TextDecoration.underline,
-                            color: Colors.blue),
+                      GestureDetector(
+                        child: Text(
+                          "انشاء حساب",
+                          style: TextStyle(
+                              fontSize: 19,
+                              decoration: TextDecoration.underline,
+                              color: main_color),
+                        ),
+                        onTap: (){
+                          Navigator.of(context).
+                          push(MaterialPageRoute(builder: (context) => creat_account()));
+                        },
                       ),
                     ],
                   )

@@ -1,4 +1,3 @@
-import 'package:diary/0_welcoming/b_first%20time%20open/first_time.dart';
 import 'package:diary/1_home/home_page.dart';
 import 'package:diary/BottomNavigationBar/BottomNavigationBar.dart';
 import 'package:flutter/material.dart';

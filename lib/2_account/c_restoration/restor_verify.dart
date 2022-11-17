@@ -1,5 +1,12 @@
+import 'package:diary/1_home/home_page.dart';
+import 'package:diary/2_account/c_restoration/restor_new_password.dart';
+import 'package:diary/templates/other_templates.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
+import 'restor_PN.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class restor_verify extends StatefulWidget {
   const restor_verify({Key? key}) : super(key: key);
@@ -9,24 +16,25 @@ class restor_verify extends StatefulWidget {
 }
 
 class _restor_verifyState extends State<restor_verify> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
   bool _onEditing = true;
-  String? _code;
+  String _code="";
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
-        title: Icon(
-          Icons.arrow_back_ios_new,
-        ),
-        backgroundColor: Colors.grey,
+        backgroundColor: Diary_appbar_color,
       ),
       body: Column(
         children: [
+          SizedBox(height: 25.h,),
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Center(
               child: Text(
-                'ادخل الرمز',
+                'يرجى ادخل الرمز هنا',
                 style: TextStyle(fontSize: 20.0),
               ),
             ),
@@ -39,25 +47,28 @@ class _restor_verifyState extends State<restor_verify> {
             keyboardType: TextInputType.number,
             underlineColor: Colors
                 .amber, // If this is null it will use primaryColor: Colors.red from Theme
-            length: 4,
+            length: 6,
             cursorColor:
-            Colors.blue, // If this is null it will default to the ambient
+            Colors.blue,
+
+            // If this is null it will default to the ambient
             // clearAll is NOT required, you can delete it
             // takes any widget, so you can implement your design
             clearAll: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'حذف الكل',
+                'حذف',
                 style: TextStyle(
-                    fontSize: 14.0,
+                    fontSize: 17.0,
                     decoration: TextDecoration.underline,
-                    color: Colors.blue[700]),
+                    color: Colors.teal[700]),
               ),
             ),
-            margin: const EdgeInsets.all(12),
+            margin: const EdgeInsets.all(3),
             onCompleted: (String value) {
               setState(() {
                 _code = value;
+
               });
             },
             onEditing: (bool value) {
@@ -67,14 +78,33 @@ class _restor_verifyState extends State<restor_verify> {
               if (!_onEditing) FocusScope.of(context).unfocus();
             },
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: _onEditing
-                  ? const Text('يرجى ادخال الرمز كاملا')
-                  : Text('$_codeالرمز الخاص بك:'),
+
+          SizedBox(
+            height: 5.h,
+          ),
+
+
+          Container(
+            height: 6.h, width: 20.h,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  primary: Diary_button_color
+              ),
+              onPressed: () async {
+                PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: restor_pn.verify, smsCode: _code);
+
+                // Sign the user in (or link) with the credential
+                await auth.signInWithCredential(credential);
+                setState(() {
+
+
+                  Navigator.of(context).
+                  push(MaterialPageRoute(builder: (context) => restor_new_password()));
+                });
+              },
+              child: Text("التالي", style: TextStyle(fontSize: 19),),
             ),
-          )
+          ),
         ],
       ),
     );

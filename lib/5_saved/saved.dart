@@ -16,7 +16,13 @@ class _savedState extends State<saved> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        title: GestureDetector(
+            child: Icon(Icons.arrow_back),
+          onTap: (){
+              Navigator.of(context).pop();
+          },
+        ),
+        backgroundColor: Diary_appbar_color,
       ),
 
       body:
@@ -58,7 +64,7 @@ class _savedState extends State<saved> {
                                children: [
 
                                  post_templates.post_residential(context,
-                                   "https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",
+                                   'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600',
                                    "مشتمل", "بيع",
                                    "بغداد", "الدورة",'www.google.org',
                                    150,10,15, 12, "مليون د.ع",
@@ -70,7 +76,7 @@ class _savedState extends State<saved> {
                                  SizedBox(height: MediaQuery.of(context).size.height/17,),
 
                                  post_templates.post_land(context,
-                                   "https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",
+                                   'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600',
                                    "سكنية","بغداد", "العامرية", 'www.google.com',
                                    30,"دونم",15,10, 120, "مليون د.ع",
                                    "مكتب السلطان للعقار", "07700000",
@@ -80,16 +86,16 @@ class _savedState extends State<saved> {
                                  SizedBox(height: MediaQuery.of(context).size.height/17,),
 
                                  post_templates.post_store(context,
-                                   "https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",
-                                   "متجر احذية", "بيع", "البصرة", "شارع اجزائر", 'www.google.org',
-                                   300,10,30, 32.0, "مليون د.ع",
+                                   'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600',
+                                    "بيع", "البصرة", "شارع اجزائر", 'www.google.org',
+                                   "300","10","30", "32.0", "مليون د.ع",
                                    "مكتب السلطان للعقار", "07700000",
                                    "بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا", true, ),
 
                                  SizedBox(height: MediaQuery.of(context).size.height/17,),
 
                                  post_templates.post_buildings(context,
-                                   "https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",
+                                   'https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg?auto=compress&cs=tinysrgb&w=600',
                                    "تجاري", "للبيع", "البصرة", "الجزائر",'www.google.com',
                                    150,10,15, 12, "مليون د.ع",
                                    3,
@@ -101,7 +107,7 @@ class _savedState extends State<saved> {
 
 
                                ],
-                             ),
+                             )
                            );
                        }),
                  ),

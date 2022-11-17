@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+// ignore and delete if we didn't have time to do it
 class my_subscription extends StatefulWidget {
   const my_subscription({Key? key}) : super(key: key);
 

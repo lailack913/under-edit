@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+// ignore and delete if we didn't have time to do it
 class payment_info extends StatefulWidget {
   const payment_info({Key? key}) : super(key: key);
 

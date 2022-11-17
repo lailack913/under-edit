@@ -19,9 +19,7 @@ class _property_typeState extends State<property_type> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Icon(
-            Icons.arrow_back_ios_new,
-          ),
+         backgroundColor: Diary_appbar_color,
         ),
         body: Container(
           padding: EdgeInsets.only(top: 37),

@@ -1,9 +1,13 @@
+import 'package:flutter/material.dart';
+//import packages
+import 'package:responsive_sizer/responsive_sizer.dart';
+
+//import dart files
 import 'package:diary/templates/other_templates.dart';
 import 'package:diary/templates/view_building.dart';
 import 'package:diary/templates/view_land.dart';
 import 'package:diary/templates/view_residential.dart';
 import 'package:diary/templates/view_store.dart';
-import 'package:flutter/material.dart';
 
  class post_templates   {
 // make a function to build the posts of residential
@@ -22,17 +26,18 @@ import 'package:flutter/material.dart';
    {
      return  GestureDetector(
        child: Container(
-         height: other_templates.height(context)/2.9,
+         height: 37.h,
          decoration: BoxDecoration(
              border: Border.all(color: Colors.grey, width: 2),
              borderRadius: BorderRadius.all(Radius.circular(19))
          ),
          child: Column(
            children: [
+
              Stack(
                children: [
                  Container(
-                     height: other_templates.height(context)/5.3,
+                     height: 21.h,
                      decoration: BoxDecoration(
                          color: Colors.grey,
                          image: DecorationImage(
@@ -47,30 +52,32 @@ import 'package:flutter/material.dart';
                    right: 10,
                    child: Container(
                        padding: EdgeInsets.only(left: 0),
-                       width: 39, height: 50,
+                       width: 10.w, height: 5.h,
                        decoration: BoxDecoration(
-                           color: Colors.white.withOpacity(0.5),
+                           color: Colors.white.withOpacity(0.7),
                            borderRadius: BorderRadius.circular(13),
                            boxShadow: [
                            ]
                        ),
                        child:
-                       Icon( Icons.bookmark_border, color: Colors.grey, size: 30,)
+                       Icon( Icons.bookmark_border, color: main_color, size: 23.sp,)
                    ),
                  )
                ],
              ),
-             Padding(padding: EdgeInsets.fromLTRB(17, 13, 17, 0),
+
+             Padding(padding: EdgeInsets.fromLTRB(4.w, 1.h, 4.w, 0),
                child:
                Row(
                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  children: [
-                   Text("المساحة:$area م", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),),
+                   Text("المساحة:$area م² ", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),),
                    Text("$residential_type-$sell_rent", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),)
                  ],
                ),
              ),
-             Padding(padding: EdgeInsets.fromLTRB(17, 1, 17, 0),
+
+             Padding(padding: EdgeInsets.fromLTRB(4.w, 0, 4.w, 1.h),
                child:
                Row(
                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,15 +87,20 @@ import 'package:flutter/material.dart';
                  ],
                ),
              ),
-             Padding(padding: EdgeInsets.fromLTRB(17, 1.5, 17, 0),
+             Padding(padding: EdgeInsets.fromLTRB(1.w, 0, 2.w, 1.h),
                child:
                Row(
                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                  children: [
-                   Icon(Icons.arrow_back_ios_new),
-                   Text("المزيد ", style: TextStyle(fontSize: 21.3, fontWeight: FontWeight.w500),),
+                   Row(
+                     children: [
+                       Icon(Icons.arrow_back_ios_new, size: 17.sp,),
+                       Text("المزيد ", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),),
+                     ],
+                   ),
+
                    Container(
-                     height: 37, width: 65,
+                     height: 4.5.h, width: 18.w,
                      decoration: BoxDecoration(
                          border: Border.all(color: Colors.grey, width: 2),
                          borderRadius: BorderRadius.all(Radius.circular(11))
@@ -96,14 +108,14 @@ import 'package:flutter/material.dart';
                      child: Row(
                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                        children: [
-                         Text("حمام"),
-                         Text("$bathroom"),
-                         Icon(Icons.cabin, size: 17,)
+                         Text("حمام",style: TextStyle(fontSize: 16.5.sp),),
+                         Text("$bathroom",style: TextStyle(fontSize: 16.5.sp),),
+                         Icon(Icons.bathtub_outlined, size: 17.sp,)
                        ],
                      ),
                    ),
                    Container(
-                     height: 37, width: 65,
+                     height:  4.5.h, width: 18.w,
                      decoration: BoxDecoration(
                          border: Border.all(color: Colors.grey, width: 2),
                          borderRadius: BorderRadius.all(Radius.circular(11))
@@ -111,14 +123,14 @@ import 'package:flutter/material.dart';
                      child: Row(
                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                        children: [
-                         Text("مطبخ"),
-                         Text("$kitchen"),
-                         Icon(Icons.cabin, size: 17,)
+                         Text("مطبخ",style: TextStyle(fontSize: 16.5.sp),),
+                         Text("$kitchen",style: TextStyle(fontSize: 16.5.sp),),
+                         Icon(Icons.soup_kitchen_outlined, size: 17.sp,)
                        ],
                      ),
                    ),
                    Container(
-                     height: 37, width: 65,
+                     height:  4.5.h, width: 18.w,
                      decoration: BoxDecoration(
                          border: Border.all(color: Colors.grey, width: 2),
                          borderRadius: BorderRadius.all(Radius.circular(11))
@@ -126,14 +138,14 @@ import 'package:flutter/material.dart';
                      child: Row(
                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                        children: [
-                         Text("صالة"),
-                         Text("$hall"),
-                         Icon(Icons.cabin, size: 17,)
+                         Text("صالة",style: TextStyle(fontSize: 16.5.sp),),
+                         Text("$hall",style: TextStyle(fontSize: 16.5.sp),),
+                         Icon(Icons.living_outlined, size: 17.sp,)
                        ],
                      ),
                    ),
                    Container(
-                     height: 37, width: 65,
+                     height:  4.5.h, width: 18.w,
                      decoration: BoxDecoration(
                          border: Border.all(color: Colors.grey, width: 2),
                          borderRadius: BorderRadius.all(Radius.circular(11))
@@ -141,15 +153,16 @@ import 'package:flutter/material.dart';
                      child: Row(
                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                        children: [
-                         Text("غرف"),
-                         Text("$room"),
-                         Icon(Icons.cabin, size: 17,)
+                         Text("غرف",style: TextStyle(fontSize: 16.5.sp),),
+                         Text("$room",style: TextStyle(fontSize: 16.5.sp),),
+                         Icon(Icons.bed_rounded, size: 19.sp,)
                        ],
                      ),
                    ),
                  ],
                ),
-             )
+             ),
+
            ],
          ),
        ),
@@ -184,27 +197,28 @@ import 'package:flutter/material.dart';
    // make a function to build the posts of store
 
    static post_store(var context,String main_img,
-       String store_type, String sell_rent,
+       String sell_rent,
        String city,String district, String location_link,
-       int area, double interface, double depth,
-       double price,String price_type,
+       String area, String interface, String depth,
+       String price,String price_type,
        String owner, String owner_phone, String property_describtion,
        bool property_state,
        )
    {
      return GestureDetector(
          child: Container(
-           height: other_templates.height(context)/2.9,
+           height: 37.h,
            decoration: BoxDecoration(
                border: Border.all(color: Colors.grey, width: 2),
                borderRadius: BorderRadius.all(Radius.circular(19))
            ),
            child: Column(
              children: [
+
                Stack(
                  children: [
                    Container(
-                       height: other_templates.height(context)/5.3,
+                       height: 21.h,
                        decoration: BoxDecoration(
                            color: Colors.grey,
                            image: DecorationImage(
@@ -219,30 +233,31 @@ import 'package:flutter/material.dart';
                      right: 10,
                      child: Container(
                          padding: EdgeInsets.only(left: 0),
-                         width: 39, height: 50,
+                         width: 10.w, height: 5.h,
                          decoration: BoxDecoration(
-                             color: Colors.white.withOpacity(0.5),
+                             color: Colors.white.withOpacity(0.7),
                              borderRadius: BorderRadius.circular(13),
                              boxShadow: [
                              ]
                          ),
                          child:
-                         Icon( Icons.bookmark_border, color: Colors.grey, size: 30,)
+                         Icon( Icons.bookmark_border, color: main_color, size: 23.sp,)
                      ),
                    )
                  ],
                ),
-               Padding(padding: EdgeInsets.fromLTRB(17, 13, 17, 0),
+
+               Padding(padding: EdgeInsets.fromLTRB(4.w, 1.5.h, 4.w, 0),
                  child:
                  Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
-                     Text("المساحة:$area م", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),),
-                     Text("$store_type-$sell_rent", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),)
+                     Text("المساحة:$area م² ", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),),
+                     Text("متجر-$sell_rent", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),)
                    ],
                  ),
                ),
-               Padding(padding: EdgeInsets.fromLTRB(17, 1, 17, 0),
+               Padding(padding: EdgeInsets.fromLTRB(4.w, 0, 4.w, 0),
                  child:
                  Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -252,12 +267,12 @@ import 'package:flutter/material.dart';
                    ],
                  ),
                ),
-               Padding(padding: EdgeInsets.fromLTRB(17, 1.5, 17, 0),
+               Padding(padding: EdgeInsets.fromLTRB(4.w, 1.h, 4.w, 0),
                  child:
                  Row(
                    children: [
-                     Icon(Icons.arrow_back_ios_new),
-                     Text("المزيد ", style: TextStyle(fontSize: 21.3, fontWeight: FontWeight.w500),),
+                     Icon(Icons.arrow_back_ios_new, size: 17.sp,),
+                     Text("المزيد ", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),),
                    ],
                  ),
                )
@@ -269,7 +284,6 @@ import 'package:flutter/material.dart';
          onTap:(){
            Navigator.of(context).
            push(MaterialPageRoute(builder: (context) => view_store(
-             store_type2: store_type,
              sell_rent2: sell_rent,
              city2: city, district2: district,
              area2: area, interface2: interface, depth2: depth,
@@ -299,7 +313,7 @@ import 'package:flutter/material.dart';
 
     return GestureDetector(
       child: Container(
-        height: other_templates.height(context)/2.9,
+        height: 37.h,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.grey, width: 2),
             borderRadius: BorderRadius.all(Radius.circular(19))
@@ -310,12 +324,11 @@ import 'package:flutter/material.dart';
             Stack(
               children: [
                 Container(
-                    height: other_templates.height(context)/5.3,
+                    height: 21.h,
                     decoration: BoxDecoration(
                         color: Colors.grey,
                         image: DecorationImage(
                           image: NetworkImage("$main_img",),
-                          //  image: NetworkImage("https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.vertical(top: Radius.circular(17))
@@ -326,47 +339,47 @@ import 'package:flutter/material.dart';
                   right: 10,
                   child: Container(
                       padding: EdgeInsets.only(left: 0),
-                      width: 39, height: 50,
+                      width: 10.w, height: 5.h,
                       decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.5),
+                          color: Colors.white.withOpacity(0.7),
                           borderRadius: BorderRadius.circular(13),
                           boxShadow: [
                           ]
                       ),
                       child:
-                      Icon( Icons.bookmark_border, color: Colors.grey, size: 30,)
+                      Icon( Icons.bookmark_border, color: main_color, size: 23.sp,)
                   ),
                 )
               ],
             ),
 
             // land type & area
-            Padding(padding: EdgeInsets.fromLTRB(17, 13, 17, 0),
+            Padding(padding: EdgeInsets.fromLTRB(4.w, 1.5.h, 4.w, 0),
               child:
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("المساحة:$area م", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),),
-                  Text("ارض-$land_type", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),)
+                  Text("المساحة:$area م² ", style: TextStyle(fontSize: 19.sp, fontWeight: FontWeight.w500),),
+                  Text("ارض-$land_type", style: TextStyle(fontSize: 19.sp, fontWeight: FontWeight.w500),)
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.fromLTRB(17, 1, 17, 0),
+            Padding(padding: EdgeInsets.fromLTRB(4.w, 0, 4.w, 0),
               child:
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("السعر: $price $price_type", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),),
-                  Text("$city-$district", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),),
+                  Text("السعر: $price $price_type", style: TextStyle(fontSize: 19.sp, fontWeight: FontWeight.w500),),
+                  Text("$city-$district", style: TextStyle(fontSize: 19.sp, fontWeight: FontWeight.w500),),
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.fromLTRB(17, 1.5, 17, 0),
+            Padding(padding: EdgeInsets.fromLTRB(4.w, 0.5.h, 4.w, 0.5.h),
               child:
               Row(
                 children: [
-                  Icon(Icons.arrow_back_ios_new),
-                  Text("المزيد ", style: TextStyle(fontSize: 21.3, fontWeight: FontWeight.w500),),
+                  Icon(Icons.arrow_back_ios_new, size: 17.sp,),
+                  Text("المزيد ", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),),
                 ],
               ),
             )
@@ -412,21 +425,22 @@ import 'package:flutter/material.dart';
   {
     return GestureDetector(
       child: Container(
-        height:  other_templates.height(context)/2.9,
+        height: 37.h,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.grey, width: 2),
             borderRadius: BorderRadius.all(Radius.circular(19))
         ),
         child: Column(
           children: [
+
             Stack(
               children: [
                 Container(
-                    height: other_templates.height(context)/5.3,
+                    height: 21.h,
                     decoration: BoxDecoration(
                         color: Colors.grey,
                         image: DecorationImage(
-                          image: NetworkImage("https://media.architecturaldigest.com/photos/57c7003fdc03716f7c8289dd/master/pass/IMG%20Worlds%20of%20Adventure%20-%201.jpg",),
+                          image: NetworkImage("$main_img",),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.vertical(top: Radius.circular(17))
@@ -437,30 +451,31 @@ import 'package:flutter/material.dart';
                   right: 10,
                   child: Container(
                       padding: EdgeInsets.only(left: 0),
-                      width: 39, height: 50,
+                      width: 10.w, height: 5.h,
                       decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.5),
+                          color: Colors.white.withOpacity(0.7),
                           borderRadius: BorderRadius.circular(13),
                           boxShadow: [
                           ]
                       ),
                       child:
-                      Icon( Icons.bookmark_border, color: Colors.grey, size: 30,)
+                      Icon( Icons.bookmark_border, color: main_color, size: 23.sp,)
                   ),
                 )
               ],
             ),
-            Padding(padding: EdgeInsets.fromLTRB(17, 13, 17, 0),
+
+            Padding(padding: EdgeInsets.fromLTRB(4.w, 1.5.h, 4.w, 0),
               child:
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("المساحة:$area م", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),),
+                  Text("المساحة:$area م² ", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),),
                   Text("مبنى-$building_type-$sell_rent", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),)
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.fromLTRB(17, 1, 17, 0),
+            Padding(padding: EdgeInsets.fromLTRB(4.w, 0.5.h, 4.w, 0),
               child:
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -470,19 +485,19 @@ import 'package:flutter/material.dart';
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.fromLTRB(17, 1.5, 17, 0),
+            Padding(padding: EdgeInsets.fromLTRB(4.w, 0.5.h, 4.w, 0),
               child:
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.arrow_back_ios_new),
-                      Text("المزيد ", style: TextStyle(fontSize: 21.3, fontWeight: FontWeight.w500),),
+                      Icon(Icons.arrow_back_ios_new, size: 17.sp,),
+                      Text("المزيد ", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),),
                     ],
                   ),
                   Container(
-                    height: 37, width: 65,
+                    height: 4.5.h, width: 25.w,
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey, width: 2),
                         borderRadius: BorderRadius.all(Radius.circular(11))
@@ -490,17 +505,15 @@ import 'package:flutter/material.dart';
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("طابق"),
-                        Text("$floors"),
-                        Icon(Icons.cabin, size: 17,)
+                        Text("طابق", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),),
+                        Text("$floors", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),),
+                        Icon(Icons.layers, size: 19.sp,)
                       ],
                     ),
                   ),
                 ],
               ),
             )
-
-
           ],
         ),
       ),
